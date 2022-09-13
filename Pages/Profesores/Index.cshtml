@@ -1,0 +1,95 @@
+﻿@page
+@model ProyHerramientas.Pages.Profesores.IndexModel
+@{
+}
+
+@functions{
+    void MostrarActivo(bool activo){
+        if(activo){
+            <span>SI</span>;
+        }
+        else{
+            <span>NO</span>;
+        }
+      
+    }
+ 
+
+    void MostrarFechaNacimiento(DateTime dt){
+        <span class="date">@dt.ToString("dd/MM/yyyy")   </span>;
+    }
+    void MostrarEstudioTipo(int tipo){
+        var tipoestudio="";
+        if(tipo==1){
+            tipoestudio="Secundario";
+        }
+        else if(tipo==2){
+            tipoestudio="Terciario";
+        }
+        else{
+            tipoestudio="Universitario";
+        }
+        <span>@tipoestudio</span>;
+    }
+      void MostrarEstudioTipo2(int tipo){
+         
+        if(tipo==1){
+            <span class="badge bg-danger">Secundario</span>;
+        }
+        else if(tipo==2){
+                <span class="badge bg-warning">Terciario</span>;
+        }
+        else{
+                <span class="badge bg-success">Universitario</span>;
+        }
+         
+    }
+}
+<h3>Vista parcial</h3>
+<form asp-page="Listado" method="post" asp-page-handler="Filtrar">
+    <input type="text" name="LegajoFiltro" placeholder="Buscar por legajo" />
+    <input type="submit"  class="btn btn-warning"  value="Buscar"/>
+</form>
+<a asp-page="Nuevo" class="btn btn-success" >Nuevo</a>
+ <table class="table">
+        <thead>
+            <tr>
+                <th>Legajo</th>
+                <th>
+                    <a asp-page="./ProfesorList" asp-route-sortOrder="OrdenPorApellido">
+                        Apellido
+                    </a>
+                </th>
+                <th>
+                    <a asp-page="./ProfesorList" asp-route-sortOrder="OrdenPorNombre">
+                        Nombre
+                    </a>
+                    
+                </th>
+                <th>Fecha nacimiento</th>
+                <th>Estudio tipo</th>
+                <th>Activo</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Profesores)
+            {
+            <tr>
+                <td>@item.Legajo
+                    <img asp-append-version="true" src="~/images/imagen.jpg" class="rounded-circl" style="width:75px;height:75px;" />
+                    <i class="bi-github" role="img" aria-label="GitHub"></i>
+                </td>
+                <td>@item.Apellido</td>
+                <td>@item.Nombre</td>
+                <td>@{MostrarFechaNacimiento(item.FechaNacimiento);}</td>
+                <td>@{MostrarEstudioTipo2(item.EstudioTipo);}</td>
+                <td>@{MostrarActivo(item.ADistancia);} </td>
+                <td>
+                    <a asp-page="./Editar" class="btn btn-primary" asp-route-leg="@item.Legajo">Editar</a> | 
+                    <a asp-page="Listado"  class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this?')" asp-page-handler="delete" asp-route-legajoborrar="@item.Legajo">Borrar con A</a>
+                </td>
+            </tr> 
+            } 
+        </tbody>
+    </table>

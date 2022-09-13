@@ -1,0 +1,45 @@
+﻿@page
+@model ProyHerramientas.Pages.Alumnos.NuevoModel
+@{
+    var mimensaje= "Hola Mundo";
+    //comentario
+    var fechaactual= DateTime.Now.DayOfWeek;
+    var mensajeyfecha= mimensaje + " " + fechaactual;
+}
+@* 
+comentarios 
+*@
+<form method="post"  >
+    <p>El mensaje es: @mensajeyfecha</p>
+    <p>@Model.TotalAlumnos</p>
+    <p>@Model.NombreProfesor</p>
+    <p><b>@ViewData["instituto"]</b></p>
+    <label  for="id" >Numero Id</label>
+    <input type="text" name="id"  placeholder="ingrese el id" />
+    <label for="recibido">Recibido</label>
+    <input type="checkbox" name="recibido" value="recibidoOk"/>
+    <label for="fechanacimiento">Fecha de Nacimiento</label>
+    <input type="date" name="fechanacimiento" />
+    <label for="clave">Password de Usuario</label>
+    <input type="password" name="clave"/>
+    <label for="opcion">Opción</label>
+    <input type="radio" name="opcion" id="matematicas" value="MATE" />
+    <label for="matematicas">Matematicas</label>
+    <input type="radio" name="opcion" id="programacion" value="PROG" />
+    <label for="progamacion">Programacion</label>
+    <label for="mail">E-mail</label>
+    <input type="email" name="mail"/>
+    <label for="archivo">Foto</label>
+    <input type="file"  name="archivo"/>
+    <label for="rango">Rango</label>
+    <input type="range" name="rango" /> 
+    
+    <input type="submit" class="btn btn-success" value="Guardar Alumno"/>
+</form>
+<form method="post" asp-page-handler="Modificar">
+    <button class="btn btn-default">Guardar otro post</button>
+</form>
+<form method="post" asp-page-handler="Verificar">
+    <button class="btn btn-danger">Verificar</button>
+</form>
+<a href="/Alumnos/Nuevo" class="btn btn-warning">Utilizar Get</a>

@@ -1,0 +1,52 @@
+﻿@page
+@model ProyHerramientas.Pages.EditarModel
+@{
+}
+ 
+<form method="post"   >
+    <div class="form-group row">
+        <label  for="id" class="col-sm-2 col-form-label" >Numero Id</label>
+    @* <input type="text" name="id" value="" placeholder="ingrese el id" />*@
+        <div class="col-sm-10">
+            <input asp-for="id" placeholder="ingrese el id" />
+        </div> 
+    </div>
+    <div class="form-group row"> 
+        <label for="recibido">Recibido</label>
+        @*<input type="checkbox" name="recibido" value="recibidoOk"/>*@
+        <input asp-for="recibido"/>
+    </div>
+    <div class="form-group"> 
+        <label for="fechanacimiento">Fecha de Nacimiento</label>
+        <input type="date" name="fechanacimiento" />
+    </div>
+    <div class="form-group"> 
+        <label for="clave">Password de Usuario</label>
+        @*<input type="password" name="clave"/>*@
+        <input asp-for="clave"/>
+    </div>
+    <div class="form-group"> 
+        <label for="opcion">Opción</label>
+        <input type="radio" name="opcion" id="matematicas" value="MATE" />
+        <label for="matematicas">Matematicas</label>
+        <input type="radio" name="opcion" id="programacion" value="PROG" />
+        <label for="progamacion">Programacion</label>
+    </div>
+    <div class="form-group"> 
+        <label for="mail">E-mail</label>
+        @*<input type="email" name="mail"/>*@
+        <input asp-for="mail"/>
+    </div>
+    <div class="form-group"> 
+        <label for="archivo">Foto</label>
+        @*<input type="file"  name="archivo"/>*@
+        <input asp-for="archivo" />
+    </div>
+    <div class="form-group">  
+        <label for="rango">Rango</label>
+        <input type="range" name="rango" /> 
+    </div>
+    <div class="form-group"> 
+        <input type="submit" class="btn btn-success" value="Guardar Alumno"/>
+    </div>
+</form>
