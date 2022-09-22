@@ -390,6 +390,32 @@ En razor:
 }
 ```
 
+## Validaciones
+
+```html
+using System.ComponentModel.DataAnnotations;
+
+[Required]
+[Range(1111111, 9999999)] 
+[Required,MaxLength(20)] 
+[Required]
+[MaxLength(20)] 
+[Required(ErrorMessage ="Debe ingresar la fecha de nacimiento")] 
+[Range(1,3)]
+
+
+@section scripts{
+   <partial name="_ValidationScriptsPartial" />
+}
+<span asp-validation-for="Profesor.Legajo" class="badge bg-danger"></span>
+
+ public IActionResult OnPost(){
+      if (ModelState.IsValid)
+      {
+      }
+ }
+```
+
 ## Ruteo
 
 La estructura de archivos determina la url que hay que poner para llegar a nuestra pagina.
