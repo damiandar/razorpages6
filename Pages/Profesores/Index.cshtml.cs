@@ -15,7 +15,7 @@ namespace ProyHerramientas.Pages.Profesores
         public IndexModel(IProfesorServicio profServicio){
                 _profServicio = profServicio;            
         } 
-        public void OnGet(string CampoOrden)
+        public void OnGet(string CampoOrden,int LegajoFiltro)
         {
             CurrentSort = CampoOrden;
             //LegajoOrden = String.IsNullOrEmpty(CampoOrden) ? "Cust_ID" : "";

@@ -46,7 +46,11 @@
     }
 }
 <h3>Vista parcial</h3>
-<form asp-page="Listado" method="post" asp-page-handler="Filtrar">
+@*<form asp-page="Listado" method="post" asp-page-handler="Filtrar">
+    <input type="text" name="LegajoFiltro" placeholder="Buscar por legajo" />
+    <input type="submit"  class="btn btn-warning"  value="Buscar"/>
+</form>*@
+<form asp-page="Listado" method="get" >
     <input type="text" name="LegajoFiltro" placeholder="Buscar por legajo" />
     <input type="submit"  class="btn btn-warning"  value="Buscar"/>
 </form>
