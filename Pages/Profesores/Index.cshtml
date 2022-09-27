@@ -54,14 +54,18 @@
  <table class="table">
         <thead>
             <tr>
-                <th>Legajo</th>
+                <th> 
+                    <a asp-page="./Index" asp-route-CampoOrden="@Model.LegajoOrden">
+                        @Html.DisplayNameFor(model => model.Profesores[0].Legajo)
+                    </a>
+                </th>
                 <th>
-                    <a asp-page="./ProfesorList" asp-route-sortOrder="OrdenPorApellido">
+                    <a asp-page="./Index" asp-route-CampoOrden="OrdenPorApellido">
                         Apellido
                     </a>
                 </th>
                 <th>
-                    <a asp-page="./ProfesorList" asp-route-sortOrder="OrdenPorNombre">
+                    <a asp-page="./ProfesorList" asp-route-CampoOrden="OrdenPorNombre">
                         Nombre
                     </a>
                     

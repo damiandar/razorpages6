@@ -414,8 +414,40 @@ using System.ComponentModel.DataAnnotations;
       {
       }
  }
+
+
 ```
 
+```html
+    <a asp-page="./Index" asp-route-CampoOrden="@Model.LegajoOrden">
+        @Html.DisplayNameFor(model => model.Profesores[0].Legajo)
+    </a>
+
+        public string CurrentSort { get; set; }
+
+        public void OnGet(string CampoOrden)
+        {
+            CurrentSort = CampoOrden;
+            //LegajoOrden = String.IsNullOrEmpty(CampoOrden) ? "Cust_ID" : "";
+            LegajoOrden = CampoOrden == "Legajo_Asc_Sort" ? " Legajo_Desc_Sort" : "Legajo_Asc_Sort";
+            Profesores = _profServicio.GetAll().ToList();
+            switch (CampoOrden)
+            {
+                case "Cust_ID":
+                    Profesores = Profesores.OrderByDescending(s => s.Id).ToList();
+                    break;
+                case " Legajo_Asc_Sort":
+                    Profesores = Profesores.OrderBy(s => s.Legajo).ToList();
+                    break;
+                case " Legajo_Desc_Sort":
+                    Profesores = Profesores.OrderByDescending(s => s.Legajo).ToList();
+                    break;
+                default:
+                    //cust = cust.OrderBy(s => s.CustomerId);
+                    break;
+            }
+        }
+```
 ## Ruteo
 
 La estructura de archivos determina la url que hay que poner para llegar a nuestra pagina.
