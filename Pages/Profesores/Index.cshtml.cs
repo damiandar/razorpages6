@@ -19,18 +19,24 @@ namespace ProyHerramientas.Pages.Profesores
         {
             CurrentSort = CampoOrden;
             //LegajoOrden = String.IsNullOrEmpty(CampoOrden) ? "Cust_ID" : "";
-            LegajoOrden = CampoOrden == "Legajo_Asc_Sort" ? " Legajo_Desc_Sort" : "Legajo_Asc_Sort";
+            LegajoOrden = (CampoOrden == "Legajo_Asc_Sort") ? "Legajo_Desc_Sort" : "Legajo_Asc_Sort";
             Profesores = _profServicio.GetAll().ToList();
             switch (CampoOrden)
             {
                 case "Cust_ID":
                     Profesores = Profesores.OrderByDescending(s => s.Id).ToList();
                     break;
-                case " Legajo_Asc_Sort":
+                case "Legajo_Asc_Sort":
                     Profesores = Profesores.OrderBy(s => s.Legajo).ToList();
                     break;
-                case " Legajo_Desc_Sort":
+                case "Legajo_Desc_Sort":
                     Profesores = Profesores.OrderByDescending(s => s.Legajo).ToList();
+                    break;
+                case "OrdenPorApellidoAsc":
+                    Profesores = Profesores.OrderBy(s => s.Apellido).ToList();
+                    break;
+                case "OrdenPorApellidoDesc":
+                    Profesores = Profesores.OrderByDescending(s => s.Apellido).ToList();
                     break;
                 default:
                     //cust = cust.OrderBy(s => s.CustomerId);
