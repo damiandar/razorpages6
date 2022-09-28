@@ -449,10 +449,7 @@ public string Nombre {get;set;}
 ```html
 <span>@Model.Nombre</span>
 ```
-
-
-## Pasar una variable de una pagina a otra por querystring
-
+## Route Data
 En contact
 ``` 
  @Page "{id:int}" o   @Page "{id:int?}"
@@ -473,6 +470,14 @@ En contact
      NroPagina=pg;
  }
 ```
+## por querystring
+```html
+<a asp-page="./Delete" asp-route-PiezaId="@item.PiezaId" asp-route-OrdenId="@Model.OrdenesProduccionCabecera.Id">
+   <i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>
+</a>
+```
+http://localhost:57653/Ordenes/Delete?PiezaId=33&OrdenId=2
+
 
 ## Ordenamiento
 
