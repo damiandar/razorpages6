@@ -15,12 +15,18 @@ namespace ProyHerramientas.Pages.Profesores
         public IndexModel(IProfesorServicio profServicio){
                 _profServicio = profServicio;            
         } 
-        public void OnGet(string CampoOrden,int LegajoFiltro)
+        public void OnGet(string CampoOrden,int LegajoFiltro,string ApellidoFiltro)
         {
             CurrentSort = CampoOrden;
             //LegajoOrden = String.IsNullOrEmpty(CampoOrden) ? "Cust_ID" : "";
             LegajoOrden = (CampoOrden == "Legajo_Asc_Sort") ? "Legajo_Desc_Sort" : "Legajo_Asc_Sort";
             Profesores = _profServicio.GetAll().ToList();
+            if(LegajoFiltro !=null && LegajoFiltro>0)
+                Profesores = Profesores.Where(x => x.Legajo == LegajoFiltro).ToList();
+            if (ApellidoFiltro != null && ApellidoFiltro.Length > 0) {
+                Profesores = Profesores.Where(x => x.Apellido.ToUpper().Contains(ApellidoFiltro.ToUpper())).ToList();
+            }
+
             switch (CampoOrden)
             {
                 case "Cust_ID":
