@@ -8,14 +8,14 @@ namespace ProyHerramientas.Pages.Profesores
 {
     public class EditarModel : PageModel
     {
+        public List<SelectListItem> MateriasLista { get; set; }
         private readonly IProfesorServicio _profService;
-        //private readonly IMateriaServicio _mateService;
+        private readonly IMateriaServicio _mateService;
         private readonly IWebHostEnvironment _hostingEnvironment;
-        public EditarModel(IProfesorServicio profServicio, IWebHostEnvironment hostingEnviroment)
+        public EditarModel(IProfesorServicio profServicio,IMateriaServicio mateServicio, IWebHostEnvironment hostingEnviroment)
         {
-            //IMateriaServicio mateServicio, 
             _profService = profServicio;
-            //_mateService = mateServicio;
+            _mateService = mateServicio;
             _hostingEnvironment = hostingEnviroment;
         }
 
@@ -23,10 +23,12 @@ namespace ProyHerramientas.Pages.Profesores
         public Profesor Profesor { get; set; }
         public void OnGet(int leg)
         {
-            //var materias = _mateService.GetAll();
-            //ViewData["Materias"] = new SelectList(materias, "Id", "Descripcion");
-            //ViewData["MateriasDirecto"] = materias;
-
+            MateriasLista= _mateService.GetAll().Select(a => 
+                                  new SelectListItem 
+                                  {
+                                      Value = a.Id.ToString(),
+                                      Text =  a.Descripcion
+                                  }).ToList();
 
             Profesor = _profService.GetAll().Where(x => x.Legajo == leg).First();
         }
@@ -44,6 +46,8 @@ namespace ProyHerramientas.Pages.Profesores
                 //guardar la ruta de la imagen en la base de datos
                 profesor.FotoRuta = nombreArchivo;
             }*/
+            var materia=_mateService.GetAll().Where(x=>x.Id==Profesor.MateriaDictadaId).First();
+            Profesor.MateriaDictada=materia;
             _profService.Modificar(Profesor);
             //var profe2=profesor;
             return RedirectToPage("Index");

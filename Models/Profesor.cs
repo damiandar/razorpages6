@@ -17,6 +17,10 @@ namespace ProyHerramientas.Models
         [Range(1, 3)]
         public int EstudioTipo { get; set; }
 
+        public int MateriaDictadaId {get;set;}
+        public Materia MateriaDictada {get;set;}
+
+
     }
     public class Pais { 
         public int Id  {get; set;}

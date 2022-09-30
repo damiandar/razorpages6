@@ -81,6 +81,7 @@
                 <th>Fecha nacimiento</th>
                 <th>Estudio tipo</th>
                 <th>Activo</th>
+                <th>Materia</th>
                 <th></th>
             </tr>
         </thead>
@@ -97,6 +98,7 @@
                 <td>@{MostrarFechaNacimiento(item.FechaNacimiento);}</td>
                 <td>@{MostrarEstudioTipo2(item.EstudioTipo);}</td>
                 <td>@{MostrarActivo(item.ADistancia);} </td>
+                <td>@item.MateriaDictada.Descripcion</td>
                 <td>
                     <a asp-page="./Editar" class="btn btn-primary" asp-route-leg="@item.Legajo">Editar</a> | 
                     <a asp-page="Listado"  class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this?')" asp-page-handler="delete" asp-route-legajoborrar="@item.Legajo">Borrar con A</a>

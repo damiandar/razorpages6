@@ -7,14 +7,14 @@ builder.Services.AddRazorPages();
 
 /*services.AddRazorPages();
 services.AddSingleton<Model.Profesor>();
-//registrarse como un servicio Scoped para que cada usuario diferente reciba su propia instancia del servicio durante la duración de su sesión. .
+//registrarse como un servicio Scoped para que cada usuario diferente reciba su propia instancia del servicio durante la duraciï¿½n de su sesiï¿½n. .
 //Un Singleton permite compartir la misma instancia de una clase de servicio entre componentes. 
-//Esto es bueno porque desea asegurarse de que todas sus páginas reciban la misma instancia de la clase de servicio Profesor. 
-//Esto garantizará que los datos (es decir, Legajo, en este ejemplo) se compartan correctamente entre las páginas a lo largo de la vida útil de la aplicación.
+//Esto es bueno porque desea asegurarse de que todas sus pï¿½ginas reciban la misma instancia de la clase de servicio Profesor. 
+//Esto garantizarï¿½ que los datos (es decir, Legajo, en este ejemplo) se compartan correctamente entre las pï¿½ginas a lo largo de la vida ï¿½til de la aplicaciï¿½n.
 services.AddScoped<Model.Profesor>();*/
 
 builder.Services.AddSingleton<IProfesorServicio, ProfesorServicio>();
-//builder.services.AddSingleton<IMateriaServicio, MateriaServicio>();
+builder.Services.AddSingleton<IMateriaServicio, MateriaServicio>();
 
 var app = builder.Build();
 

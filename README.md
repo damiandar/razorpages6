@@ -389,6 +389,27 @@ En razor:
     }
 }
 ```
+## Combos
+
+```
+using Microsoft.AspNetCore.Mvc.Rendering;
+
+public List<SelectListItem> MateriasLista { get; set; }
+
+MateriasLista= _mateService.GetAll().Select(a => 
+                        new SelectListItem 
+                        {
+                            Value = a.Id.ToString(),
+                            Text =  a.Descripcion
+                        }).ToList();
+```
+
+```html
+<select asp-for="Profesor.MateriaDictadaId"  asp-items="Model.MateriasLista" >
+    
+</select>
+```
+
 
 ## Validaciones
 
