@@ -1,9 +1,14 @@
 using ProyHerramientas.Servicios;
+using Microsoft.EntityFrameworkCore;
+using ProyHerramientas.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddDbContext<SchoolContext>(options =>
+  options.UseSqlServer(builder.Configuration.GetConnectionString("AppConnectionString")));
 
 /*services.AddRazorPages();
 services.AddSingleton<Model.Profesor>();
