@@ -45,6 +45,12 @@
          
     }
 }
+@if(Model.MensajeExitoso!=null){
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    @Model.MensajeExitoso
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"/>
+</div>
+}
 <h3>Vista parcial</h3>
 @*<form asp-page="Listado" method="post" asp-page-handler="Filtrar">
     <input type="text" name="LegajoFiltro" placeholder="Buscar por legajo" />

@@ -8,6 +8,8 @@ namespace ProyHerramientas.Pages.Profesores
 {
     public class EditarModel : PageModel
     {
+        [TempData]
+        public string MensajeExitoso{get;set;}
         public List<SelectListItem> MateriasLista { get; set; }
         private readonly IProfesorServicio _profService;
         private readonly IMateriaServicio _mateService;
@@ -50,6 +52,7 @@ namespace ProyHerramientas.Pages.Profesores
             Profesor.MateriaDictada=materia;
             _profService.Modificar(Profesor);
             //var profe2=profesor;
+            MensajeExitoso="Se modificó correctamente.";
             return RedirectToPage("Index");
         }
     }

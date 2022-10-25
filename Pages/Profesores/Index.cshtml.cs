@@ -7,6 +7,8 @@ namespace ProyHerramientas.Pages.Profesores
 {
     public class IndexModel : PageModel
     {
+        [TempData]
+        public string MensajeExitoso{get;set;}
         [BindProperty]
         public List<Profesor> Profesores { get; set; }
         private IProfesorServicio _profServicio;
