@@ -18,6 +18,9 @@ dotnet new page -n PaginaPrueba -o ./Pages/
 dotnet new page -n Listado -o Pages/Profesores
 
 dotnet new page -n _FormProfesor -o ./Pages/Shared
+## Seguridad con VS
+
+https://endjin.com/blog/2022/03/adding-authentication-and-authorisation-to-aspnet-core-web-applications
 
 ## Seguridad Identity
 
