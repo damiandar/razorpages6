@@ -24,9 +24,9 @@ https://endjin.com/blog/2022/03/adding-authentication-and-authorisation-to-aspne
 
 ## Seguridad Identity
 
-dotnet add package Microsoft.AspNetCore.Identity.UI --version 5.0.12
+dotnet add package Microsoft.AspNetCore.Identity.UI --version 6.0.11
 
-dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore --version 5.0.13
+dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore --version 6.0.11
 
    > Microsoft.AspNetCore.Identity.EntityFrameworkCore      
    > Microsoft.AspNetCore.Identity.UI                   
